@@ -1,0 +1,254 @@
+.workout-player {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-primary);
+}
+
+/* Header */
+.player-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-md);
+    padding-top: max(var(--space-md), env(safe-area-inset-top));
+}
+
+.player-cancel {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-full);
+    color: var(--text-primary);
+    font-size: var(--font-size-lg);
+}
+
+.player-progress-text {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+/* Progress Bar */
+.player-progress-bar {
+    height: 4px;
+    background: var(--bg-tertiary);
+    margin: 0 var(--space-md);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+}
+
+.player-progress-fill {
+    height: 100%;
+    background: var(--accent-gradient);
+    border-radius: var(--radius-full);
+    transition: width var(--transition-normal);
+}
+
+/* Content */
+.player-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-xl);
+    text-align: center;
+}
+
+/* Rest Screen */
+.rest-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-lg);
+}
+
+.rest-label {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+}
+
+.rest-timer {
+    font-size: 80px;
+    font-weight: 800;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+}
+
+.rest-next {
+    color: var(--text-secondary);
+    font-size: var(--font-size-base);
+}
+
+/* Exercise Screen */
+.exercise-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+    width: 100%;
+    max-width: 400px;
+}
+
+.exercise-icon-large {
+    font-size: 64px;
+    margin-bottom: var(--space-md);
+    animation: float 3s ease-in-out infinite;
+}
+
+.exercise-title {
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+}
+
+.exercise-set-indicator {
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
+    background: var(--bg-tertiary);
+    padding: var(--space-xs) var(--space-md);
+    border-radius: var(--radius-full);
+}
+
+.exercise-timer-display {
+    margin: var(--space-xl) 0;
+}
+
+.timer-countdown {
+    font-size: 72px;
+    font-weight: 800;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+}
+
+.timer-reps {
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.exercise-instructions {
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    text-align: left;
+    width: 100%;
+}
+
+.exercise-instructions p {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    margin-bottom: var(--space-sm);
+    padding-left: var(--space-md);
+    position: relative;
+}
+
+.exercise-instructions p::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--accent-primary);
+}
+
+.exercise-instructions p:last-child {
+    margin-bottom: 0;
+}
+
+/* Controls */
+.player-controls {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-md);
+    padding: var(--space-lg);
+}
+
+.control-btn {
+    padding: var(--space-md) var(--space-xl);
+    border-radius: var(--radius-lg);
+    font-weight: 600;
+    font-size: var(--font-size-base);
+    transition: all var(--transition-fast);
+}
+
+.control-btn.pause {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+}
+
+.control-btn.done {
+    background: var(--accent-gradient);
+    color: var(--bg-primary);
+    flex: 1;
+    max-width: 200px;
+}
+
+.control-btn.skip {
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+}
+
+.control-btn:hover {
+    transform: scale(1.05);
+}
+
+.control-btn:active {
+    transform: scale(0.95);
+}
+
+/* Exercise List */
+.player-exercise-list {
+    padding: var(--space-md);
+    max-height: 150px;
+    overflow-y: auto;
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border-color);
+}
+
+.player-exercise-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm) 0;
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
+}
+
+.player-exercise-item.current {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.player-exercise-item.done {
+    color: var(--accent-success);
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+.player-exercise-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: var(--radius-full);
+    background: var(--bg-tertiary);
+}
+
+.player-exercise-item.current .player-exercise-dot {
+    background: var(--accent-gradient);
+    box-shadow: var(--shadow-glow);
+}
+
+.player-exercise-item.done .player-exercise-dot {
+    background: var(--accent-success);
+}

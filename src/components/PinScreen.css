@@ -1,0 +1,137 @@
+.pin-screen {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-primary);
+    padding: var(--space-lg);
+}
+
+.pin-content {
+    width: 100%;
+    max-width: 320px;
+    text-align: center;
+}
+
+.pin-header {
+    margin-bottom: var(--space-2xl);
+}
+
+.pin-logo {
+    font-size: 64px;
+    margin-bottom: var(--space-md);
+    animation: float 3s ease-in-out infinite;
+}
+
+.pin-title {
+    font-size: var(--font-size-3xl);
+    font-weight: 800;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: var(--space-sm);
+}
+
+.pin-subtitle {
+    color: var(--text-secondary);
+}
+
+.pin-dots {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
+    height: 40px;
+    align-items: center;
+}
+
+.pin-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: var(--radius-full);
+    border: 2px solid var(--text-muted);
+    transition: all var(--transition-fast);
+}
+
+.pin-dot.filled {
+    background: var(--accent-gradient);
+    border-color: var(--accent-primary);
+    transform: scale(1.1);
+}
+
+.pin-dots.error .pin-dot.filled {
+    background: var(--accent-danger);
+    border-color: var(--accent-danger);
+}
+
+.pin-dots.shake {
+    animation: shake 0.5s ease;
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    20%,
+    60% {
+        transform: translateX(-10px);
+    }
+
+    40%,
+    80% {
+        transform: translateX(10px);
+    }
+}
+
+.pin-error {
+    color: var(--accent-danger);
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--space-md);
+    height: 20px;
+}
+
+.pin-keypad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-sm);
+    margin-bottom: var(--space-xl);
+}
+
+.pin-key {
+    height: 64px;
+    font-size: var(--font-size-2xl);
+    font-weight: 600;
+    color: var(--text-primary);
+    background: var(--bg-secondary);
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-fast);
+}
+
+.pin-key:hover:not(:disabled) {
+    background: var(--bg-tertiary);
+    transform: scale(1.05);
+}
+
+.pin-key:active:not(:disabled) {
+    transform: scale(0.95);
+}
+
+.pin-key.empty {
+    background: transparent;
+    cursor: default;
+}
+
+.pin-key.delete {
+    font-size: var(--font-size-xl);
+    background: var(--bg-tertiary);
+}
+
+.pin-hint {
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
+}
