@@ -69,7 +69,7 @@ function PinScreen({ onSubmit }) {
                     ))}
                 </div>
 
-                <p className="pin-hint">Code par défaut : 2309</p>
+
             </div>
         </div>
     );
