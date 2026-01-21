@@ -3,16 +3,17 @@
     bottom: 0;
     left: 0;
     right: 0;
-    height: var(--nav-height);
+    /* Hauteur de base + safe area pour Home Indicator iPhone */
+    height: calc(var(--nav-height) + env(safe-area-inset-bottom, 0px));
     background: var(--bg-glass);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border-top: 1px solid var(--border-color);
     display: flex;
     justify-content: space-around;
-    align-items: center;
-    padding: 0 var(--space-sm);
-    padding-bottom: env(safe-area-inset-bottom, 0);
+    align-items: flex-start;
+    padding: var(--space-sm) var(--space-xs);
+    padding-bottom: max(var(--space-sm), env(safe-area-inset-bottom, 0px));
     z-index: 100;
 }
 
@@ -20,11 +21,23 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 4px;
-    padding: var(--space-sm) var(--space-md);
+    justify-content: center;
+    gap: 2px;
+    /* Minimum 44x44 pour les touch targets Apple */
+    min-width: 44px;
+    min-height: 44px;
+    padding: var(--space-xs) var(--space-sm);
     color: var(--text-muted);
     transition: all var(--transition-fast);
     position: relative;
+    border-radius: var(--radius-md);
+    /* Améliore le tap sur mobile */
+    -webkit-tap-highlight-color: transparent;
+}
+
+.nav-item:active {
+    transform: scale(0.95);
+    background: rgba(255, 255, 255, 0.05);
 }
 
 .nav-item.active {
@@ -34,21 +47,59 @@
 .nav-item.active::before {
     content: '';
     position: absolute;
-    top: -1px;
+    top: -4px;
     left: 50%;
     transform: translateX(-50%);
-    width: 32px;
+    width: 28px;
     height: 3px;
     background: var(--accent-gradient);
     border-radius: 0 0 var(--radius-full) var(--radius-full);
 }
 
 .nav-icon {
-    font-size: 24px;
+    font-size: 22px;
     line-height: 1;
 }
 
 .nav-label {
-    font-size: var(--font-size-xs);
+    font-size: 10px;
     font-weight: 500;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+}
+
+/* iPhone 16 et plus grands écrans (393px+) */
+@media screen and (min-width: 390px) {
+    .nav-item {
+        min-width: 56px;
+        padding: var(--space-xs) var(--space-md);
+    }
+
+    .nav-icon {
+        font-size: 24px;
+    }
+
+    .nav-label {
+        font-size: 11px;
+    }
+}
+
+/* iPhone 16 Pro Max (430px+) */
+@media screen and (min-width: 428px) {
+    .navigation {
+        padding: var(--space-sm) var(--space-md);
+    }
+
+    .nav-item {
+        min-width: 64px;
+        gap: 4px;
+    }
+
+    .nav-icon {
+        font-size: 26px;
+    }
+
+    .nav-label {
+        font-size: 12px;
+    }
 }

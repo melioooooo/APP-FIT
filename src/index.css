@@ -64,9 +64,31 @@
   --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
 
-  /* Layout */
-  --nav-height: 4.5rem;
+  /* Layout - Mobile First */
+  --nav-height: 4rem;
   --max-width: 480px;
+
+  /* Safe areas for notch/Dynamic Island */
+  --safe-area-top: env(safe-area-inset-top, 0px);
+  --safe-area-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* iPhone 16 et grands écrans (393px+) */
+@media screen and (min-width: 390px) {
+  :root {
+    --nav-height: 4.25rem;
+    --space-md: 1.125rem;
+    --space-lg: 1.75rem;
+  }
+}
+
+/* iPhone 16 Pro Max (430px+) */
+@media screen and (min-width: 428px) {
+  :root {
+    --nav-height: 4.5rem;
+    --font-size-base: 1.0625rem;
+    --max-width: 520px;
+  }
 }
 
 /* ===== RESET ===== */
@@ -179,6 +201,9 @@ img {
   transition: all var(--transition-normal);
   white-space: nowrap;
   letter-spacing: -0.01em;
+  /* Minimum 44px pour touch target Apple */
+  min-height: 44px;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .btn-primary {
